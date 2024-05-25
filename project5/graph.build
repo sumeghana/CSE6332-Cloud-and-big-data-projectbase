@@ -1,0 +1,17 @@
+#!/bin/bash
+
+rm -rf graph.jar classes
+
+module load cpu/0.15.4 gcc/7.5.0 openjdk hadoop/3.2.2 spark
+SW=/expanse/lustre/projects/uot193/fegaras
+export SCALA_HOME=$SW/scala-2.12.3
+
+PATH="$SCALA_HOME/bin:$PATH"
+
+CORE_JAR=`ls $SPARK_HOME/jars/spark-core*.jar`
+
+mkdir -p classes
+scalac -d classes -cp classes:${CORE_JAR} src/main/scala/Graph.scala
+jar cf graph.jar -C classes .
+
+echo "Compilation completed."
