@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH -A uot193
+#SBATCH --job-name="trip.local"
+#SBATCH --output="trip.local.out"
+#SBATCH --partition=shared
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=4
+#SBATCH --mem=16G
+#SBATCH --export=ALL 
+#SBATCH --time=10
+
+module load cpu/0.15.4 gcc/7.5.0 openjdk hadoop/3.2.2
+SW=/expanse/lustre/projects/uot193/fegaras
+
+rm -rf output1 output2 small-output.txt
+hadoop --config $SW/conf jar trip.jar Trip tripdata-small.csv output
+cp output/part* small-output.txt

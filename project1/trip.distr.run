@@ -1,0 +1,32 @@
+#!/bin/bash
+#SBATCH -A uot193
+#SBATCH --job-name="trip"
+#SBATCH --output="trip.distr.out"
+#SBATCH --partition=compute
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=128
+#SBATCH --mem=249208M
+#SBATCH --export=ALL 
+#SBATCH --time=29
+
+export HADOOP_CONF_DIR=/home/$USER/expansecluster
+module load cpu/0.15.4 gcc/7.5.0 openjdk
+SW=/expanse/lustre/projects/uot193/fegaras
+export HADOOP_HOME=$SW/hadoop-3.2.2
+export MYHADOOP_HOME=$SW/myhadoop
+PATH="$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$MYHADOOP_HOME/bin:$PATH"
+
+myhadoop-configure.sh -s /scratch/$USER/job_$SLURM_JOBID
+
+start-dfs.sh
+start-yarn.sh
+
+hdfs dfs -mkdir -p /user/$USER/ /user/$USER/tripdata
+hdfs dfs -put $SW/tripdata/* /user/$USER/tripdata/
+hadoop jar trip.jar Trip /user/$USER/tripdata /user/$USER/output
+rm -f large-output.txt
+hdfs dfs -getmerge /user/$USER/output/ large-output.txt
+
+stop-yarn.sh
+stop-dfs.sh
+myhadoop-cleanup.sh

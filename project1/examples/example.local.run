@@ -1,0 +1,19 @@
+#!/bin/bash
+#SBATCH -A uot193
+#SBATCH --job-name="example.local"
+#SBATCH --output="example.local.out"
+#SBATCH --partition=shared
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=4
+#SBATCH --mem=16G
+#SBATCH --export=ALL 
+#SBATCH --time=10
+
+module load cpu/0.15.4 gcc/7.5.0 openjdk hadoop/3.2.2
+SW=/expanse/lustre/projects/uot193/fegaras
+
+rm -rf output-simple output-join
+echo "Evaluating Simple.java:"
+hadoop --config $SW/conf jar example.jar Simple simple.txt output-simple
+echo "Evaluating Join.java:"
+hadoop --config $SW/conf jar example.jar Join e.txt d.txt output-join
