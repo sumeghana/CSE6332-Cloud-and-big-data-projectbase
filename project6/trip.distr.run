@@ -1,0 +1,36 @@
+#!/bin/bash
+#SBATCH -A uot193
+#SBATCH --job-name="trip"
+#SBATCH --output="trip.distr.out"
+#SBATCH --partition=compute
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=120
+#SBATCH --mem=249208M
+#SBATCH --export=ALL 
+#SBATCH --time=29
+
+export HADOOP_CONF_DIR=/home/$USER/expansecluster
+module load cpu/0.15.4 gcc/7.5.0 openjdk
+SW=/expanse/lustre/projects/uot193/fegaras
+export HADOOP_HOME=$SW/hadoop-3.2.2
+export MYHADOOP_HOME=$SW/myhadoop
+export PIG_HOME=$SW/pig-0.17.0
+export PIG_CLASSPATH=$HADOOP_CONF_DIR
+export HADOOP_MAPRED_LOG_DIR=$HOME
+
+PATH="$PIG_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$MYHADOOP_HOME/bin:$PATH"
+
+myhadoop-configure.sh -s /scratch/$USER/job_$SLURM_JOBID
+
+start-dfs.sh
+start-yarn.sh
+mr-jobhistory-daemon.sh start historyserver
+
+hdfs dfs -mkdir -p /user/$USER/ /user/$USER/tripdata
+hdfs dfs -put $SW/tripdata/* /user/$USER/tripdata/
+pig -x mapreduce -param T=/user/$USER/tripdata trip.pig
+
+mr-jobhistory-daemon.sh stop historyserver
+stop-yarn.sh
+stop-dfs.sh
+myhadoop-cleanup.sh
