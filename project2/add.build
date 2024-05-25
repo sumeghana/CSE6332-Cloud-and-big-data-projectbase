@@ -1,0 +1,12 @@
+#!/bin/bash
+
+rm -rf add.jar classes
+
+module load cpu/0.15.4 gcc/7.5.0 openjdk hadoop/3.2.2
+SW=/expanse/lustre/projects/uot193/fegaras
+
+mkdir -p classes
+javac -d classes -cp classes:`$HADOOP_HOME/bin/hadoop classpath` src/main/java/Add.java
+jar cf add.jar -C classes .
+
+echo "Compilation completed."
