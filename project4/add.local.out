@@ -1,0 +1,162 @@
+
+The following have been reloaded with a version change:
+  1) cpu/0.17.3b => cpu/0.15.4
+
+Compilation completed.
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.spark.unsafe.Platform (file:/cm/shared/apps/spack/cpu/opt/spack/linux-centos8-zen/gcc-8.3.1/spark-3.2.1-bin-hadoop3.2/jars/spark-unsafe_2.12-3.2.1.jar) to constructor java.nio.DirectByteBuffer(long,int)
+WARNING: Please consider reporting this to the maintainers of org.apache.spark.unsafe.Platform
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+24/04/02 10:23:03 INFO SparkContext: Running Spark version 3.2.1
+24/04/02 10:23:03 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+24/04/02 10:23:04 INFO ResourceUtils: ==============================================================
+24/04/02 10:23:04 INFO ResourceUtils: No custom resources configured for spark.driver.
+24/04/02 10:23:04 INFO ResourceUtils: ==============================================================
+24/04/02 10:23:04 INFO SparkContext: Submitted application: Block Matrix Addition
+24/04/02 10:23:04 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(memoryOverhead -> name: memoryOverhead, amount: 600, script: , vendor: , cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 2048, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+24/04/02 10:23:04 INFO ResourceProfile: Limiting resource is cpu
+24/04/02 10:23:04 INFO ResourceProfileManager: Added ResourceProfile id: 0
+24/04/02 10:23:04 INFO SecurityManager: Changing view acls to: ssunku1
+24/04/02 10:23:04 INFO SecurityManager: Changing modify acls to: ssunku1
+24/04/02 10:23:04 INFO SecurityManager: Changing view acls groups to: 
+24/04/02 10:23:04 INFO SecurityManager: Changing modify acls groups to: 
+24/04/02 10:23:04 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(ssunku1); groups with view permissions: Set(); users  with modify permissions: Set(ssunku1); groups with modify permissions: Set()
+24/04/02 10:23:04 INFO Utils: Successfully started service 'sparkDriver' on port 41011.
+24/04/02 10:23:04 INFO SparkEnv: Registering MapOutputTracker
+24/04/02 10:23:04 INFO SparkEnv: Registering BlockManagerMaster
+24/04/02 10:23:04 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+24/04/02 10:23:04 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+24/04/02 10:23:04 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+24/04/02 10:23:04 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-c9690234-663e-4abb-801a-942590de96fa
+24/04/02 10:23:04 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+24/04/02 10:23:04 INFO SparkEnv: Registering OutputCommitCoordinator
+24/04/02 10:23:04 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+24/04/02 10:23:04 INFO Utils: Successfully started service 'SparkUI' on port 4041.
+24/04/02 10:23:04 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://exp-1-05.expanse.sdsc.edu:4041
+24/04/02 10:23:04 INFO SparkContext: Added JAR file:/home/ssunku1/project4/add.jar at spark://exp-1-05.expanse.sdsc.edu:41011/jars/add.jar with timestamp 1712078583829
+24/04/02 10:23:05 INFO Executor: Starting executor ID driver on host exp-1-05.expanse.sdsc.edu
+24/04/02 10:23:05 INFO Executor: Fetching spark://exp-1-05.expanse.sdsc.edu:41011/jars/add.jar with timestamp 1712078583829
+24/04/02 10:23:05 INFO TransportClientFactory: Successfully created connection to exp-1-05.expanse.sdsc.edu/198.202.103.250:41011 after 44 ms (0 ms spent in bootstraps)
+24/04/02 10:23:05 INFO Utils: Fetching spark://exp-1-05.expanse.sdsc.edu:41011/jars/add.jar to /tmp/spark-c5c2b2fb-878d-486a-a3ed-f3ced4907f1d/userFiles-6b6c6c11-bd3e-4d79-beee-a8b14632c3bb/fetchFileTemp7463359477540949652.tmp
+24/04/02 10:23:05 INFO Executor: Adding file:/tmp/spark-c5c2b2fb-878d-486a-a3ed-f3ced4907f1d/userFiles-6b6c6c11-bd3e-4d79-beee-a8b14632c3bb/add.jar to class loader
+24/04/02 10:23:05 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 42535.
+24/04/02 10:23:05 INFO NettyBlockTransferService: Server created on exp-1-05.expanse.sdsc.edu:42535
+24/04/02 10:23:05 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+24/04/02 10:23:05 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, exp-1-05.expanse.sdsc.edu, 42535, None)
+24/04/02 10:23:05 INFO BlockManagerMasterEndpoint: Registering block manager exp-1-05.expanse.sdsc.edu:42535 with 434.4 MiB RAM, BlockManagerId(driver, exp-1-05.expanse.sdsc.edu, 42535, None)
+24/04/02 10:23:05 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, exp-1-05.expanse.sdsc.edu, 42535, None)
+24/04/02 10:23:05 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, exp-1-05.expanse.sdsc.edu, 42535, None)
+24/04/02 10:23:06 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 219.7 KiB, free 434.2 MiB)
+24/04/02 10:23:06 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 32.1 KiB, free 434.2 MiB)
+24/04/02 10:23:06 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on exp-1-05.expanse.sdsc.edu:42535 (size: 32.1 KiB, free: 434.4 MiB)
+24/04/02 10:23:06 INFO SparkContext: Created broadcast 0 from textFile at Add.scala:42
+24/04/02 10:23:06 INFO FileInputFormat: Total input files to process : 1
+24/04/02 10:23:07 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 219.8 KiB, free 433.9 MiB)
+24/04/02 10:23:07 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 32.1 KiB, free 433.9 MiB)
+24/04/02 10:23:07 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on exp-1-05.expanse.sdsc.edu:42535 (size: 32.1 KiB, free: 434.3 MiB)
+24/04/02 10:23:07 INFO SparkContext: Created broadcast 1 from textFile at Add.scala:42
+24/04/02 10:23:07 INFO FileInputFormat: Total input files to process : 1
+24/04/02 10:23:07 INFO SparkContext: Starting job: collect at Add.scala:76
+24/04/02 10:23:07 INFO DAGScheduler: Registering RDD 9 (groupBy at Add.scala:47) as input to shuffle 0
+24/04/02 10:23:07 INFO DAGScheduler: Registering RDD 3 (groupBy at Add.scala:47) as input to shuffle 1
+24/04/02 10:23:07 INFO DAGScheduler: Got job 0 (collect at Add.scala:76) with 2 output partitions
+24/04/02 10:23:07 INFO DAGScheduler: Final stage: ResultStage 2 (collect at Add.scala:76)
+24/04/02 10:23:07 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 0, ShuffleMapStage 1)
+24/04/02 10:23:07 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 0, ShuffleMapStage 1)
+24/04/02 10:23:07 INFO DAGScheduler: Submitting ShuffleMapStage 0 (MapPartitionsRDD[9] at groupBy at Add.scala:47), which has no missing parents
+24/04/02 10:23:07 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 7.8 KiB, free 433.9 MiB)
+24/04/02 10:23:07 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 4.2 KiB, free 433.9 MiB)
+24/04/02 10:23:07 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on exp-1-05.expanse.sdsc.edu:42535 (size: 4.2 KiB, free: 434.3 MiB)
+24/04/02 10:23:07 INFO SparkContext: Created broadcast 2 from broadcast at DAGScheduler.scala:1478
+24/04/02 10:23:07 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 0 (MapPartitionsRDD[9] at groupBy at Add.scala:47) (first 15 tasks are for partitions Vector(0, 1))
+24/04/02 10:23:07 INFO TaskSchedulerImpl: Adding task set 0.0 with 2 tasks resource profile 0
+24/04/02 10:23:07 INFO DAGScheduler: Submitting ShuffleMapStage 1 (MapPartitionsRDD[3] at groupBy at Add.scala:47), which has no missing parents
+24/04/02 10:23:07 INFO MemoryStore: Block broadcast_3 stored as values in memory (estimated size 7.8 KiB, free 433.9 MiB)
+24/04/02 10:23:07 INFO MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 4.2 KiB, free 433.9 MiB)
+24/04/02 10:23:07 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on exp-1-05.expanse.sdsc.edu:42535 (size: 4.2 KiB, free: 434.3 MiB)
+24/04/02 10:23:07 INFO SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1478
+24/04/02 10:23:07 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 1 (MapPartitionsRDD[3] at groupBy at Add.scala:47) (first 15 tasks are for partitions Vector(0, 1))
+24/04/02 10:23:07 INFO TaskSchedulerImpl: Adding task set 1.0 with 2 tasks resource profile 0
+24/04/02 10:23:07 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (exp-1-05.expanse.sdsc.edu, executor driver, partition 0, PROCESS_LOCAL, 4504 bytes) taskResourceAssignments Map()
+24/04/02 10:23:07 INFO TaskSetManager: Starting task 1.0 in stage 0.0 (TID 1) (exp-1-05.expanse.sdsc.edu, executor driver, partition 1, PROCESS_LOCAL, 4504 bytes) taskResourceAssignments Map()
+24/04/02 10:23:07 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)
+24/04/02 10:23:07 INFO Executor: Running task 1.0 in stage 0.0 (TID 1)
+24/04/02 10:23:07 INFO HadoopRDD: Input split: file:/home/ssunku1/project4/N-matrix-small.txt:0+10422
+24/04/02 10:23:07 INFO HadoopRDD: Input split: file:/home/ssunku1/project4/N-matrix-small.txt:10422+10422
+24/04/02 10:23:07 INFO Executor: Finished task 1.0 in stage 0.0 (TID 1). 1142 bytes result sent to driver
+24/04/02 10:23:08 INFO Executor: Finished task 0.0 in stage 0.0 (TID 0). 1142 bytes result sent to driver
+24/04/02 10:23:08 INFO TaskSetManager: Starting task 0.0 in stage 1.0 (TID 2) (exp-1-05.expanse.sdsc.edu, executor driver, partition 0, PROCESS_LOCAL, 4504 bytes) taskResourceAssignments Map()
+24/04/02 10:23:08 INFO Executor: Running task 0.0 in stage 1.0 (TID 2)
+24/04/02 10:23:08 INFO TaskSetManager: Starting task 1.0 in stage 1.0 (TID 3) (exp-1-05.expanse.sdsc.edu, executor driver, partition 1, PROCESS_LOCAL, 4504 bytes) taskResourceAssignments Map()
+24/04/02 10:23:08 INFO Executor: Running task 1.0 in stage 1.0 (TID 3)
+24/04/02 10:23:08 INFO HadoopRDD: Input split: file:/home/ssunku1/project4/M-matrix-small.txt:10421+10422
+24/04/02 10:23:08 INFO HadoopRDD: Input split: file:/home/ssunku1/project4/M-matrix-small.txt:0+10421
+24/04/02 10:23:08 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 708 ms on exp-1-05.expanse.sdsc.edu (executor driver) (1/2)
+24/04/02 10:23:08 INFO TaskSetManager: Finished task 1.0 in stage 0.0 (TID 1) in 704 ms on exp-1-05.expanse.sdsc.edu (executor driver) (2/2)
+24/04/02 10:23:08 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+24/04/02 10:23:08 INFO DAGScheduler: ShuffleMapStage 0 (groupBy at Add.scala:47) finished in 0.904 s
+24/04/02 10:23:08 INFO DAGScheduler: looking for newly runnable stages
+24/04/02 10:23:08 INFO DAGScheduler: running: Set(ShuffleMapStage 1)
+24/04/02 10:23:08 INFO DAGScheduler: waiting: Set(ResultStage 2)
+24/04/02 10:23:08 INFO DAGScheduler: failed: Set()
+24/04/02 10:23:08 INFO Executor: Finished task 1.0 in stage 1.0 (TID 3). 1056 bytes result sent to driver
+24/04/02 10:23:08 INFO Executor: Finished task 0.0 in stage 1.0 (TID 2). 1056 bytes result sent to driver
+24/04/02 10:23:08 INFO TaskSetManager: Finished task 1.0 in stage 1.0 (TID 3) in 181 ms on exp-1-05.expanse.sdsc.edu (executor driver) (1/2)
+24/04/02 10:23:08 INFO TaskSetManager: Finished task 0.0 in stage 1.0 (TID 2) in 192 ms on exp-1-05.expanse.sdsc.edu (executor driver) (2/2)
+24/04/02 10:23:08 INFO DAGScheduler: ShuffleMapStage 1 (groupBy at Add.scala:47) finished in 0.817 s
+24/04/02 10:23:08 INFO DAGScheduler: looking for newly runnable stages
+24/04/02 10:23:08 INFO DAGScheduler: running: Set()
+24/04/02 10:23:08 INFO DAGScheduler: waiting: Set(ResultStage 2)
+24/04/02 10:23:08 INFO DAGScheduler: failed: Set()
+24/04/02 10:23:08 INFO DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[16] at filter at Add.scala:76), which has no missing parents
+24/04/02 10:23:08 INFO TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool 
+24/04/02 10:23:08 INFO MemoryStore: Block broadcast_4 stored as values in memory (estimated size 11.5 KiB, free 433.9 MiB)
+24/04/02 10:23:08 INFO MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 5.5 KiB, free 433.9 MiB)
+24/04/02 10:23:08 INFO BlockManagerInfo: Added broadcast_4_piece0 in memory on exp-1-05.expanse.sdsc.edu:42535 (size: 5.5 KiB, free: 434.3 MiB)
+24/04/02 10:23:08 INFO SparkContext: Created broadcast 4 from broadcast at DAGScheduler.scala:1478
+24/04/02 10:23:08 INFO DAGScheduler: Submitting 2 missing tasks from ResultStage 2 (MapPartitionsRDD[16] at filter at Add.scala:76) (first 15 tasks are for partitions Vector(0, 1))
+24/04/02 10:23:08 INFO TaskSchedulerImpl: Adding task set 2.0 with 2 tasks resource profile 0
+24/04/02 10:23:08 INFO TaskSetManager: Starting task 0.0 in stage 2.0 (TID 4) (exp-1-05.expanse.sdsc.edu, executor driver, partition 0, NODE_LOCAL, 4510 bytes) taskResourceAssignments Map()
+24/04/02 10:23:08 INFO TaskSetManager: Starting task 1.0 in stage 2.0 (TID 5) (exp-1-05.expanse.sdsc.edu, executor driver, partition 1, NODE_LOCAL, 4510 bytes) taskResourceAssignments Map()
+24/04/02 10:23:08 INFO Executor: Running task 0.0 in stage 2.0 (TID 4)
+24/04/02 10:23:08 INFO Executor: Running task 1.0 in stage 2.0 (TID 5)
+24/04/02 10:23:08 INFO ShuffleBlockFetcherIterator: Getting 2 (10.9 KiB) non-empty blocks including 2 (10.9 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+24/04/02 10:23:08 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 26 ms
+24/04/02 10:23:08 INFO ShuffleBlockFetcherIterator: Getting 2 (13.2 KiB) non-empty blocks including 2 (13.2 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+24/04/02 10:23:08 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 37 ms
+24/04/02 10:23:08 INFO ShuffleBlockFetcherIterator: Getting 2 (12.6 KiB) non-empty blocks including 2 (12.6 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+24/04/02 10:23:08 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+24/04/02 10:23:08 INFO ShuffleBlockFetcherIterator: Getting 2 (11.4 KiB) non-empty blocks including 2 (11.4 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+24/04/02 10:23:08 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+24/04/02 10:23:08 INFO Executor: Finished task 1.0 in stage 2.0 (TID 5). 1227 bytes result sent to driver
+24/04/02 10:23:08 INFO TaskSetManager: Finished task 1.0 in stage 2.0 (TID 5) in 301 ms on exp-1-05.expanse.sdsc.edu (executor driver) (1/2)
+24/04/02 10:23:08 INFO Executor: Finished task 0.0 in stage 2.0 (TID 4). 1642 bytes result sent to driver
+24/04/02 10:23:08 INFO TaskSetManager: Finished task 0.0 in stage 2.0 (TID 4) in 318 ms on exp-1-05.expanse.sdsc.edu (executor driver) (2/2)
+24/04/02 10:23:08 INFO TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool 
+24/04/02 10:23:08 INFO DAGScheduler: ResultStage 2 (collect at Add.scala:76) finished in 0.334 s
+24/04/02 10:23:08 INFO DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+24/04/02 10:23:08 INFO TaskSchedulerImpl: Killing all running tasks in stage 2: Stage finished
+24/04/02 10:23:08 INFO DAGScheduler: Job 0 finished: collect at Add.scala:76, took 1.378547 s
+((1,2),
+ 67.78 182.57 77.84 105.97 44.85 78.55
+ 4.37 116.41 147.45 58.34 87.75 183.61
+ 160.11 120.44 53.32 120.03 90.70 104.32
+ 13.59 77.62 84.71 194.16 114.15 164.43
+ 77.69 58.14 147.12 147.64 177.47 119.70
+ 74.77 98.32 157.79 109.99 82.22 114.65
+ 119.10 116.99 50.34 41.95 146.35 153.27
+ 91.28 111.30 92.84 40.84 14.44 101.39
+)
+24/04/02 10:23:08 INFO SparkContext: Invoking stop() from shutdown hook
+24/04/02 10:23:08 INFO SparkUI: Stopped Spark web UI at http://exp-1-05.expanse.sdsc.edu:4041
+24/04/02 10:23:08 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+24/04/02 10:23:08 INFO MemoryStore: MemoryStore cleared
+24/04/02 10:23:08 INFO BlockManager: BlockManager stopped
+24/04/02 10:23:08 INFO BlockManagerMaster: BlockManagerMaster stopped
+24/04/02 10:23:08 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+24/04/02 10:23:08 INFO SparkContext: Successfully stopped SparkContext
+24/04/02 10:23:08 INFO ShutdownHookManager: Shutdown hook called
+24/04/02 10:23:08 INFO ShutdownHookManager: Deleting directory /tmp/spark-c5c2b2fb-878d-486a-a3ed-f3ced4907f1d
+24/04/02 10:23:08 INFO ShutdownHookManager: Deleting directory /tmp/spark-76fe8af7-b2e5-4028-822b-740f42ce261c

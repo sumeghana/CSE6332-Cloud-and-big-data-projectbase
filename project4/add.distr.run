@@ -1,0 +1,42 @@
+#!/bin/bash
+#SBATCH -A uot193
+#SBATCH --job-name="add"
+#SBATCH --output="add.distr.out"
+#SBATCH --partition=compute
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=128
+#SBATCH --mem=249208M
+#SBATCH --export=ALL 
+#SBATCH --time=29
+
+export HADOOP_CONF_DIR=/home/$USER/expansecluster
+module load cpu/0.15.4 gcc/7.5.0 openjdk hadoop/3.2.2 spark
+SW=/expanse/lustre/projects/uot193/fegaras
+
+# location of scratch space
+scratch=/scratch/$USER/job_$SLURM_JOB_ID
+
+myhadoop-configure.sh -s $scratch
+
+SPARK_ENV=$HADOOP_CONF_DIR/spark/spark-env.sh
+echo "export TMP=$scratch/tmp" >> $SPARK_ENV
+echo "export TMPDIR=$scratch/tmp" >> $SPARK_ENV
+echo "export SPARK_LOCAL_DIRS=$scratch" >> $SPARK_ENV
+source $SPARK_ENV
+
+export SPARK_MASTER_HOST=$SPARK_MASTER_IP
+
+SPARK_OPTIONS="--driver-memory 24G --num-executors 8 --executor-cores 12 --executor-memory 24G --supervise"
+
+# start HDFS
+start-dfs.sh
+# start Spark
+myspark start
+
+hdfs dfs -mkdir -p /user/$USER
+hdfs dfs -put $SW/M-matrix-large.txt /user/$USER/M-matrix-large.txt
+hdfs dfs -put $SW/N-matrix-large.txt /user/$USER/N-matrix-large.txt
+spark-submit --class Add --num-executors 2 add.jar 200 300 /user/$USER/M-matrix-large.txt /user/$USER/N-matrix-large.txt
+
+stop-dfs.sh
+myhadoop-cleanup.sh

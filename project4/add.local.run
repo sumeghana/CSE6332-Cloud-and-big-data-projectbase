@@ -1,0 +1,25 @@
+#!/bin/bash
+#SBATCH -A uot193
+#SBATCH --job-name="add.local"
+#SBATCH --output="add.local.out"
+#SBATCH --partition=shared
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=2
+#SBATCH --export=ALL 
+#SBATCH --time=10
+
+module load cpu/0.15.4 gcc/7.5.0 openjdk hadoop/3.2.2 spark
+
+rm -rf add.jar classes
+SW=/expanse/lustre/projects/uot193/fegaras
+export SCALA_HOME=$SW/scala-2.12.3
+PATH="$SCALA_HOME/bin:$PATH"
+CORE_JAR=`ls $SPARK_HOME/jars/spark-core*.jar`
+
+mkdir -p classes
+scalac -d classes -cp classes:${CORE_JAR} src/main/scala/Add.scala
+jar cf add.jar -C classes .
+
+echo "Compilation completed."
+
+spark-submit --class Add --master local[2] add.jar 8 6 M-matrix-small.txt N-matrix-small.txt
